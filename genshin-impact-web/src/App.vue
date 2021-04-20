@@ -10,6 +10,7 @@ import CharacterList from './components/CharactersList.vue'
 import axios from 'axios'
 
 var characterList = []
+var backendUrl = 'https://geshin-impact-web-go-tool-app.herokuapp.com'
 
 export default {
   name: 'App',
@@ -26,7 +27,7 @@ export default {
   },
   methods: {
     fetchCharacterList() {
-      var url = 'http://localhost:5000/characters';
+      var url = backendUrl + '/characters';
       
       axios.get(url).then(response => {
         var characterList = response.data.Characters;
@@ -34,7 +35,7 @@ export default {
       });
     },
     addCharacter(newCharacter) {
-      var url = 'http://localhost:5000/characters/add';
+      var url = backendUrl + '/characters/add';
       var character = {
         "Name": newCharacter[0].Name,
         "Vision": newCharacter[0].Vision,
